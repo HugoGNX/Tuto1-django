@@ -1,26 +1,15 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Blog Django Tuto1</title>
-</head>
-
-<body>
-    <header>
-        <h1><a href="/">Blog Django Tuto1</a></h1>
-    </header>
-
+{% extends 'blog/base.html' %}
+{% block content %}
+    {% for post in posts %}
+    <article class="post">
+        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+        <time class="date">
+            {{ post.published_date }}
+        </time>
+    </article>
+    {% endfor %}
     <div>
-        {% for post in posts %}
-        <article>
-            <h2><a href="">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
-            <time>published: {{ post.published_date }}</time>
-        </article>
-        {% endfor %}
-
-    </div>
-    <div >
         <h2>Remerciement</h2>
         <p>Nous vous remercions d'avoir lu nos {{ posts.count }} articles.</p>
 
@@ -31,5 +20,4 @@
         {{ post.title }} /
         {% endfor %}
     </div>
-
-</html>
+{% endblock %}
