@@ -13,12 +13,23 @@
     <div>
         {% for post in posts %}
         <article>
-            <time>published: {{ post.published_date }}</time>
             <h2><a href="">{{ post.title }}</a></h2>
             <p>{{ post.text|linebreaksbr }}</p>
+            <time>published: {{ post.published_date }}</time>
         </article>
         {% endfor %}
 
+    </div>
+    <div >
+        <h2>Remerciement</h2>
+        <p>Nous vous remercions d'avoir lu nos {{ posts.count }} articles.</p>
+
+    </div>
+    <div>
+        <h3>Récapitulatif</h3>
+        {% for post in posts %}
+        {{ post.title }} /
+        {% endfor %}
     </div>
 
 </html>
