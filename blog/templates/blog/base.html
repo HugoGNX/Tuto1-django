@@ -18,6 +18,14 @@
             <a href="{% url 'post_new' %}" class="top-menu">
                 {% include './icons/file-earmark-plus.svg' %}
             </a>
+            <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="top-menu" style="background:none; border:none; cursor:pointer;">
+                    Se déconnecter
+                </button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}" class="top-menu">Se connecter</a>
         {% endif %}
         <h1><a href="/">Blog Django Tuto1</a></h1>
     </header>
